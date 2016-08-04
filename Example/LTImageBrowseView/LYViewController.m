@@ -13,6 +13,7 @@
 @interface LYViewController ()<LTImageBrowseViewDelegate>{
 
     NSArray *listArray;
+    LTImageBrowseView *ltImageBrowseView;
 }
 
 @end
@@ -32,8 +33,9 @@
     
     UIView *superV = self.view;
     
-    LTImageBrowseView *ltImageBrowseView = [[LTImageBrowseView alloc]initWithFrame:self.view.bounds];
+    ltImageBrowseView = [[LTImageBrowseView alloc]initWithFrame:self.view.bounds];
     ltImageBrowseView.ltDelegate = self;
+    ltImageBrowseView.defaultIndex = 2;
     [superV addSubview:ltImageBrowseView];
     
     ltImageBrowseView.translatesAutoresizingMaskIntoConstraints = NO;

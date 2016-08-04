@@ -32,7 +32,10 @@
 
 -(void)layoutSubviews{
 
-    [self lt_reloadData];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [self lt_reloadData];
+    });
 }
 
 - (void)setup {
@@ -52,10 +55,8 @@
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     
-    UINib *cellNib = [UINib nibWithNibName:@"Frameworks/LTImageBrowseView.framework/LTBrowseImageCell"
-                                    bundle:nil];
-    [self.collectionView registerNib:cellNib
-          forCellWithReuseIdentifier:@"LTBrowseImageCell"];
+    [self.collectionView registerClass:[LTBrowseImageCell class]
+            forCellWithReuseIdentifier:@"LTBrowseImageCell"];
     
     UIView *superV = self;
     [superV addSubview:self.collectionView];
@@ -133,14 +134,21 @@
 }
 
 - (void)lt_reloadData{
+
+    [self.collectionView reloadData];
     
-    self.pageControl.currentPage = 0;
+    NSUInteger index = self.defaultIndex;
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+    if (index >= self.pageControl.numberOfPages) {
+        
+        index = self.pageControl.numberOfPages - 1;
+    }
+    self.pageControl.currentPage = index;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index
+                                                                    inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:NO];
-    
-    [self.collectionView reloadData];
 }
 
 -(NSUInteger)numberOfItems{

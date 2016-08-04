@@ -28,6 +28,6 @@
 @property(nonatomic,assign) id<LTImageBrowseViewDelegate>ltDelegate;
 @property(nonatomic,assign,readonly) NSUInteger numberOfItems;
 @property(nonatomic,assign,readonly) NSUInteger currentIndex;
-
+@property(nonatomic,assign) NSUInteger defaultIndex;
 - (void)lt_reloadData;
 @end

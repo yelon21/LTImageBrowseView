@@ -1,0 +1,6 @@
+framework module LTImageBrowseView {
+  umbrella header "LTImageBrowseView-umbrella.h"
+
+  export *
+  module * { export * }
+}

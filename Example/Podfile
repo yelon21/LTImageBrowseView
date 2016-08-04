@@ -1,0 +1,12 @@
+use_frameworks!
+
+target 'LTImageBrowseView_Example' do
+  pod 'LTImageBrowseView', :path => '../'
+
+  target 'LTImageBrowseView_Tests' do
+    inherit! :search_paths
+
+    
+  end
+  pod 'SDWebImage', '~> 3.8.1'
+end

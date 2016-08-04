@@ -1,0 +1,21 @@
+PODS:
+  - LTImageBrowseView (0.1.0)
+  - SDWebImage (3.8.1):
+    - SDWebImage/Core (= 3.8.1)
+  - SDWebImage/Core (3.8.1)
+
+DEPENDENCIES:
+  - LTImageBrowseView (from `../`)
+  - SDWebImage (~> 3.8.1)
+
+EXTERNAL SOURCES:
+  LTImageBrowseView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LTImageBrowseView: c5cee8191fc297e2427af5edfd540b9ee36e7328
+  SDWebImage: 35f9627a3e44b4f292a8a8ce6a531fa488239b91
+
+PODFILE CHECKSUM: 0ca1758e9e7aebb60e42502a9aabb48960327d35
+
+COCOAPODS: 1.0.0

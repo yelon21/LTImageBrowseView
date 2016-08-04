@@ -10,7 +10,7 @@
 
 @interface LTBrowseImageCell : UICollectionViewCell
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIImageView *lt_imageView;
+@property (strong, nonatomic,readonly) UIImageView *lt_imageView;
 
 @property(nonatomic) CGFloat minimumZoomScale;
 @property(nonatomic) CGFloat maximumZoomScale;

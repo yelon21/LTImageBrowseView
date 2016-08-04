@@ -134,6 +134,12 @@
 
 - (void)lt_reloadData{
     
+    self.pageControl.currentPage = 0;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                                atScrollPosition:UICollectionViewScrollPositionNone
+                                        animated:NO];
+    
     [self.collectionView reloadData];
 }
 #pragma mark UIScrollViewDelegate

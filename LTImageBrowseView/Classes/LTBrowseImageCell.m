@@ -21,8 +21,8 @@
 - (void)prepareForReuse{
     
     self.scrollView.zoomScale = 1.0;
-    self.minimumZoomScale = 1.0;
-    self.maximumZoomScale = 1.0;
+    self.minimumZoomScale = self.minimumZoomScale;
+    self.maximumZoomScale = self.maximumZoomScale;
 }
 
 - (instancetype)initWithFrame:(CGRect)frame{

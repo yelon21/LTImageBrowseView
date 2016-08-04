@@ -136,19 +136,36 @@
 - (void)lt_reloadData{
 
     [self.collectionView reloadData];
+
+    [self showItemAtIndex:self.defaultIndex];
+}
+
+- (void)showItemAtIndex:(NSInteger)index{
     
-    NSUInteger index = self.defaultIndex;
-    
-    if (index >= self.pageControl.numberOfPages) {
+    NSInteger toIndex = index;
+    if (toIndex >= self.pageControl.numberOfPages) {
         
-        index = self.pageControl.numberOfPages - 1;
+        toIndex = self.pageControl.numberOfPages - 1;
+        if (toIndex<0) {
+            toIndex = 0;
+        }
     }
-    self.pageControl.currentPage = index;
     
-    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:index
+    self.pageControl.currentPage = toIndex;
+    
+    [self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:toIndex
                                                                     inSection:0]
                                 atScrollPosition:UICollectionViewScrollPositionNone
                                         animated:NO];
+    
+    [self scrollViewDidEndDecelerating:self.collectionView];
+}
+
+-(void)setDefaultIndex:(NSUInteger)defaultIndex{
+
+    _defaultIndex = defaultIndex;
+    
+    [self showItemAtIndex:_defaultIndex];
 }
 
 -(NSUInteger)numberOfItems{

@@ -142,6 +142,16 @@
     
     [self.collectionView reloadData];
 }
+
+-(NSUInteger)numberOfItems{
+
+    return self.pageControl.numberOfPages;
+}
+
+-(NSUInteger)currentIndex{
+
+    return self.pageControl.currentPage;
+}
 #pragma mark UIScrollViewDelegate
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
 

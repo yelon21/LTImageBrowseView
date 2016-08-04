@@ -26,5 +26,8 @@
 @interface LTImageBrowseView : UIView
 
 @property(nonatomic,assign) id<LTImageBrowseViewDelegate>ltDelegate;
+@property(nonatomic,assign,readonly) NSUInteger numberOfItems;
+@property(nonatomic,assign,readonly) NSUInteger currentIndex;
+
 - (void)lt_reloadData;
 @end

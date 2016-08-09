@@ -143,9 +143,20 @@
 - (void)showItemAtIndex:(NSInteger)index{
     
     NSInteger toIndex = index;
-    if (toIndex >= self.pageControl.numberOfPages) {
+    
+    NSInteger num = 0;
+    
+    if ([self.ltDelegate respondsToSelector:@selector(lt_ImageBrowseViewNumberOfItems)]) {
         
-        toIndex = self.pageControl.numberOfPages - 1;
+        num = [self.ltDelegate lt_ImageBrowseViewNumberOfItems];
+    }
+    if (num == 0) {
+        
+        return;
+    }
+    if (toIndex >= num) {
+        
+        toIndex = num - 1;
         if (toIndex<0) {
             toIndex = 0;
         }
